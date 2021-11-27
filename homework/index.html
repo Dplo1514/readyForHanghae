@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&display=swap" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+
+    <title>1주차 숙제 "나만의 쇼핑몰 만들기"</title>
+
+    <style>
+    * {
+        font-family: 'Nanum Myeongjo', serif;
+    }
+
+    .wrap {
+        width: 1000px;
+        margin: 2% auto;
+        border: 2px solid black;
+        border-radius: 2%;
+    }
+
+    .picture {
+        display:block;
+        text-align: center;
+        width: 700px;
+        margin:2% auto 0 auto;
+        border-radius: 2%;
+        border: 2px solid black;
+    }
+
+    .name_price{
+        display: inline-block;
+        margin:0 2% 0 0;
+        padding-bottom: 0px;
+    }
+
+    .commet_wrap{
+        margin: 1.5% 0 3% 10%;
+    }
+
+    .order_wrap {
+        margin-left: 10%;
+        width: 500px;
+    }
+
+    .form-select{
+        width: 450px;
+    }
+
+    .input-group {
+    margin:2% 0 2% 0;
+    }
+
+    .input-group-text {
+        border-radius: 0;
+    }
+
+    .btn-primary {
+        display: block;
+        margin: 3% auto 3% auto;
+        width: 400px;
+    }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="wrap">
+        <img class="picture"
+             src="https://images.chosun.com/resizer/JjddXe0-JIWYENGx-TtIXQvYyyc=/600x381/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/T4C3MFVG3QIQUSKJIQU5ZS6MCA.jpg"></img>
+
+        <div class="commet_wrap">
+            <h1 class="name_price">seltos</h1>
+
+            <p class="name_price"> 가격 : 500원 / 개</p></p>
+
+            <p>기아 자동차 셀토스를 판매합니다. 제가 아직 차가 없기 때문에 싼 가격에 셀토스를 파는 곳이 있다면 꼭 사고싶습니다.
+                <br/>숙제라도 이 가격에 자동차를 판매하는 곳이 있기를 바라며 희망사항을 담은 웹페이지를 만들어봅니다.
+            </p>
+        </div>
+
+        <div class="order_wrap">
+            <h2>주문하기</h2>
+
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text">주문자 성함</span>
+                    <input type="text" class="form-control" placeholder="성함을 입력해주세요" aria-label="Username"
+                           aria-describedby="addon-wrapping">
+                </div>
+
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text">수량</span>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>수량을 선택해주세요</option>
+                    <option value="1">1대</option>
+                    <option value="2">2대</option>
+                    <option value="3">3대</option>
+                    <option value="4">4대</option>
+                    <option value="5">5대</option>
+                </select>
+            </div>
+
+
+
+
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text">주소</span>
+                    <input type="text" class="form-control" placeholder="받아보실 주소를 입력해주세요" aria-label="Username"
+                           aria-describedby="addon-wrapping">
+                </div>
+
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text">연락처</span>
+                    <input type="text" class="form-control" placeholder="연락가능한 번호를 입력해주세요" aria-label="Username"
+                           aria-describedby="addon-wrapping">
+                </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-lg">구매하기</button>
+
+    </div>
+</body>
+
+</html>
