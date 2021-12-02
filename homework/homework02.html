@@ -23,8 +23,26 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
+    <script>
 
-    <title>1주차 숙제 "나만의 쇼핑몰 만들기"</title>
+        function q1() {
+            $('#q1').empty()
+            $.ajax({
+                type: "GET",
+                url: "https://api.thecatapi.com/v1/images/search",
+                data: {},
+                success: function (response) {
+                    let rows = response[0]["url"]
+                    console.log(rows)
+                    $('#img-cat').attr("src", rows);
+                }
+            })
+        }
+    </script>
+
+
+
+    <title>2주차 숙제 "환율 계산기 추가하기"</title>
 
     <style>
     * {
@@ -79,6 +97,10 @@
         margin: 3% auto 3% auto;
         width: 400px;
     }
+
+    .dollorsty {
+      margin-left: 13.2%;
+    }
     </style>
 
 
@@ -92,7 +114,7 @@
         <div class="commet_wrap">
             <h1 class="name_price">seltos</h1>
 
-            <p class="name_price"> 가격 : 500원 / 개</p> <p id = "dollor"></p>
+            <p class="name_price"> 가격 : 500원 / 개</p><p class="dollorsty" id ="dollor">달러 - 원 환율 : </p>
 
             <p>기아 자동차 셀토스를 판매합니다. 제가 아직 차가 없기 때문에 싼 가격에 셀토스를 파는 곳이 있다면 꼭 사고싶습니다.
                 <br/>숙제라도 이 가격에 자동차를 판매하는 곳이 있기를 바라며 희망사항을 담은 웹페이지를 만들어봅니다.
