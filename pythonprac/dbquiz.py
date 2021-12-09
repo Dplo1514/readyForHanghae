@@ -10,7 +10,7 @@ print(matrix['point'])
 same_point = list(db.movies.find({'point':'9.39'},{'_id':False}))
 for same_points in same_point :
     print(same_points['title'])
-
+ㅇ
 #매트릭스 영화 평점을 0으로 만들기
 db.movies.update_one({'title':'매트릭스'},{'$set':{'point':'0'}})
 

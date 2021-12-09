@@ -24,7 +24,7 @@ for tr in trs:
         rank = tr.select_one('td:nth-child(1) > img')['alt']
         point = tr.select_one('td.point').text
 
-        print(title ,rank , point )
+        print(rank ,title  , point )
 
         doc = {
             'rank'  : rank ,
