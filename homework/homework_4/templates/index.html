@@ -29,6 +29,20 @@
             q1();
         });
 
+        function q1() {
+            $('#q1').empty()
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/rate",
+                data: {},
+                success: function (response) {
+                    let rows = response["rate"]
+                    let temp_html = `<p class="hwanyul">${rows}</p>`
+                    $("#dollor").append(temp_html)
+                }
+            })
+        }
+
         $(document).ready(function () {
             $.ajax({
                 type: "GET",
@@ -39,37 +53,57 @@
                     $('#rate-box').text(nowRate);
                 }
             })
-            order_listing();
         });
 
-        function order_listing() {
-            // 주문목록 보기 API 연결
-            $.ajax({
-                type: "GET",
-                url: "/order?sample_give=샘플데이터",
-                data: {},
-                success: function (response) {
-                    alert(response["msg"]);
-                }
-            })
-        }
+              $(document).ready(function () {
+                order_listing();
+            });
 
-        function order() {
-            // 주문하기 API 연결
-            let name = $('#name').val()
-            let many = $('#many').val()
-            let address = $('#address').val()
-            let number = $('#number').val()
+           function order_listing() {
+               // 주문목록 보기 API 연결
+   						$.ajax({
+                   type: "GET",
+                   url: "/order",
+                   data: {},
+                   success: function (response) {
+                       let orderer = response["all_orderer"]
+                       for (let i = 0 ; i < orderer.length;  i++){
+                           let name_get = response[i]['name']
+                           let amount_get = response[i]['amount']
+                           let address_get = response[i]['address']
+                           let phone_get = response[i]['phone']
 
-            $.ajax({
-                type: "POST",
-                url: "/order",
-                data: {name_give : name , many_give : many , address_give : address , number_give : number},
-                success: function (response) { // 성공하면
-                    alert(response["msg"]);
-                }
-            })
-        }
+                           let temp_html = `<tr>
+                                                <th scope="col">${name_get}</th>
+                                                <th scope="col">${amount_get}</th>
+                                                <th scope="col">${address_get}</th>
+                                                <th scope="col">${phone_get}</th>
+                                             </tr>`
+
+                           $('#orderer').append(temp_html)
+                       }
+                       console.log(response)
+                   }
+               })
+           }
+
+           function order() {
+               let name = $('#name').val()
+               let amount = $('#amount').val()
+               let address = $('#address').val()
+               let phone = $('#phone').val()
+
+               // 주문하기 API 연결
+   						$.ajax({
+                   type: "POST",
+                   url: "/order",
+                   data: {name_give : name , amount_give : amount , address_give : address , phone_give : phone},
+                   success: function (response) { // 성공하면
+                       alert(response["msg"])
+                       window.location.reload();
+                   }
+               })
+           }
 
 
     </script>
@@ -163,15 +197,15 @@
     <div class="order_wrap">
         <h2>주문하기</h2>
 
-        <div id = "name"class="input-group flex-nowrap">
+        <div class="input-group flex-nowrap">
             <span class="input-group-text">주문자 성함</span>
-            <input type="text" class="form-control" placeholder="성함을 입력해주세요" aria-label="Username"
+            <input id = "name" type="text" class="form-control" placeholder="성함을 입력해주세요" aria-label="Username"
                    aria-describedby="addon-wrapping">
         </div>
 
-        <div id = "many" class="input-group flex-nowrap">
+        <div  class="input-group flex-nowrap">
             <span class="input-group-text">수량</span>
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <select id = "amount" class="form-select form-select-sm" aria-label=".form-select-sm example">
                 <option selected>수량을 선택해주세요</option>
                 <option value="1">1대</option>
                 <option value="2">2대</option>
@@ -182,20 +216,20 @@
         </div>
 
 
-        <div id = "address "class="input-group flex-nowrap">
+        <div class="input-group flex-nowrap">
             <span class="input-group-text">주소</span>
-            <input type="text" class="form-control" placeholder="받아보실 주소를 입력해주세요" aria-label="Username"
+            <input id = "address"  type="text" class="form-control" placeholder="받아보실 주소를 입력해주세요" aria-label="Username"
                    aria-describedby="addon-wrapping">
         </div>
 
-        <div id = "number" class="input-group flex-nowrap">
+        <div  class="input-group flex-nowrap">
             <span class="input-group-text">연락처</span>
-            <input type="text" class="form-control" placeholder="연락가능한 번호를 입력해주세요" aria-label="Username"
+            <input id = "phone" type="text" class="form-control" placeholder="연락가능한 번호를 입력해주세요" aria-label="Username"
                    aria-describedby="addon-wrapping">
         </div>
     </div>
 
-    <button type="button" class="btn btn-primary btn-lg">구매하기</button>
+    <button onclick="order()" type="button" class="btn btn-primary btn-lg">구매하기</button>
 
     <table class="table">
         <thead>
@@ -206,7 +240,7 @@
             <th scope="col">연락처</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id = "orederer">
         <tr>
             <th scope="row">1</th>
             <td>Mark</td>

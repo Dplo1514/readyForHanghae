@@ -9,6 +9,15 @@ from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.dbsparta
 
+from flask import Flask, render_template, jsonify, request
+
+app = Flask(__name__)
+
+from pymongo import MongoClient
+
+client = MongoClient('localhost', 27017)
+db = client.dbhomework
+
 
 ## HTML 화면 보여주기
 @app.route('/')
@@ -19,36 +28,30 @@ def homework():
 # 주문하기(POST) API
 @app.route('/order', methods=['POST'])
 def save_order():
-    name_recevice = request.form['name_give']
-    many_recevice = request.form['many_give']
-    address_recevice = request.form['address_give']
-    number_recevice = request.form['number_give']
-
-
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-    data = requests.get(name_recevice ,headers=headers)
-
-    soup = BeautifulSoup(data.text, 'html.parser')
+    name_receive = request.form['name_give']
+    amount_receive = request.form['amount_give']
+    address_receive = request.form['address_give']
+    phone_receive = request.form['phone_give']
 
     doc = {
-        'name' : name_recevice ,
-        'many' : many_recevice ,
-        'address'  : address_recevice ,
-        'number'   : number_recevice
+        'name': name_receive,
+        'amount': amount_receive,
+        'address': address_receive,
+        'phone': phone_receive,
     }
 
     db.shop.insert_one(doc)
 
-    return jsonify({'msg': '이 요청은 POST!'})
+    return jsonify({'msg': '주문정보 저장이 완료되었습니다.'})
+
 
 
 # 주문 목록보기(Read) API
 @app.route('/order', methods=['GET'])
 def view_orders():
-    sample_receive = request.args.get('sample_give')
-    print(sample_receive)
-    return jsonify({'msg': '이 요청은 GET!'})
+    orderer = list(db.homework.find({}, {'_id': False}))
+    return jsonify({'all_orderer': orderer})
+
 
 
 if __name__ == '__main__':
