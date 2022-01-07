@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Jua&family=Noto+Sans+KR:wght@500&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="homework.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <title>Plo home work</title>
+
+    <script>
+        $(document).ready(function () {
+         $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/weather/ulsan",
+                data: {},
+                success: function (response) {
+                    let temp = response['temp']
+                    $('#weather').text(temp)
+                }
+            })
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="title">
+        <h1>어쿠루브 팬 페이지</h1>
+          <h3>-오늘 날씨-</h3>
+        <p>현재기온: <span id = "weather"> </span></p>
+    </div>
+    <div class="post-form" id = "post-box">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="url" placeholder="name@example.com">
+            <label for="url">닉네임</label>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">응원 댓글</label>
+        </div>
+
+        <button type="button" class="btn btn-dark">응원 남기기</button>
+    </div>
+
+    <div class="post-card">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>어쿠루브 화이팅!</p>
+                <footer class="blockquote-footer">PLO</footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="post-card">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>어쿠루브 화이팅!</p>
+                <footer class="blockquote-footer">PLO</footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="post-card">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>어쿠루브 화이팅!</p>
+                <footer class="blockquote-footer">PLO</footer>
+            </blockquote>
+        </div>
+    </div>
+
+</body>
+
+</html>
