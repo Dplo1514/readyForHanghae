@@ -16,6 +16,4 @@ for genie in geniebase :
         title = genie.select_one('td.info > a.title.ellipsis').text.lstrip().replace("19금","").lstrip()
         singer = genie.select_one('td.info > a.artist.ellipsis').text
 
-        print(rank,title,singer)
-
-
+        print(rank , title , singer)
